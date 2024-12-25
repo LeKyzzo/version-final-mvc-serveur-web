@@ -18,6 +18,18 @@ class MainController extends CoreController
         dump($list);
         dump($elem);
     }
+
+    public function productList()
+    {
+        // Ici on créer une instance de la classe Product (donc le model Product)
+        $productModel = new Product();
+        // Ici on stocke la liste de tous les produits grâce à notre méthode findAll()
+        $products = $productModel->findAll();
+        // Ici je retourne la vue product_list (qui n'existe pas encore car on ne l'a pas encore créer) en lui passant $products. On va pouvoir réutiliser $products au sein de cette vue.
+        $this->show('product_list', [
+            'products' => $products
+        ]);
+    }
     /**
      * Affiche la page d'accueil du site
      */
